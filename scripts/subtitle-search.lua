@@ -637,7 +637,7 @@ function update_search_results_async(query, live)
 
         result_list.selected = closest_lower_index
         result_list.header = "Search results for \"" .. query .. "\"\\N ------------------------------------"
-        result_list.header = result_list.header .. "\\NENTER to jump to subtitle, Ctrl+Shift+Enter to adjust subtitle timing to selected line"
+        result_list.header = result_list.header .. "\\NENTER to jump to subtitle. Ctrl+Shift+Enter to shift subtitle timeline"
 
         result_list:update()
         result_list:open()
