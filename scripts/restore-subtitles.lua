@@ -4,6 +4,8 @@ Differs from `watch-later`-saved data in that it saves secondary subtitles too (
 It also stores subtitle visibility state for a secondary subtitles too.
 ]]--
 
+package.path = package.path .. ";" .. mp.command_native({ "expand-path", "~~/script-modules/?.lua" })
+local json = require "pretty.json"
 local mp = require "mp"
 local utils = require "mp.utils"
 
@@ -74,7 +76,9 @@ local function saveDataFile()
     return
   end
 
-  local jsonContent, ret = utils.format_json(savedData)
+  -- local jsonContent, ret = utils.format_json(savedData)
+  -- replace:nil -- space:2 -- print_address:nil -- sort_table_keys:true -- escape_string_values:true -- empty_table_as_array:nil
+  local jsonContent, ret = json.stringify(savedData, nil, 2, nil, true, true)
   if ret ~= error and jsonContent ~= nil then
       file:write(jsonContent)
   end
